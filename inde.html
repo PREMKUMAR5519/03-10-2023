@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body style="background-color: aqua;">
+    <h1 style="text-align: center;">UBER Fare Check</h1>
+    <div style="padding-left: 42%; padding-top: 10%;">
+        <input type="text" placeholder="enter distance in km" id="text">
+        <button type="submit" onclick="clicked()" style="background-color: rgb(73, 57, 213); color: antiquewhite; border-radius: 10px; border-color: blue;">Check</button>
+   
+    <div>basefare:Rs.5</div>
+    <div>bookingFee:Rs.10</div>
+    <span>total cost</span>
+    <span id="totalcost"></span>
+    </div>
+    <SCript>
+        
+        class UberPriceCalculator {
+            constructor(baseFare, costPerKilometer, bookingFee) {
+                this.baseFare = baseFare;
+                this.costPerKilometer = costPerKilometer;
+                this.bookingFee = bookingFee;
+            }
+
+            calculatePrice(distance) {
+                const distanceCost = this.costPerKilometer * distance;
+                const totalFare = this.baseFare + distanceCost + this.bookingFee;
+
+                return totalFare;
+            }
+        }
+        const uberCalculator = new UberPriceCalculator(5, 2, 10);
+        function clicked() {
+        var text = Number(document.getElementById("text").value)
+        const totalFare = uberCalculator.calculatePrice(text);
+        const result = totalFare.toFixed(2);
+        var totalcost = document.getElementById("totalcost");
+        totalcost.innerHTML = result
+        
+        }
+
+
+    </SCript>
+</body>
+
+</html>
